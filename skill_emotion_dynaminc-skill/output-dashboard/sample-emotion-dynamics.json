@@ -1,0 +1,197 @@
+{
+  "input_meta": {
+    "text_type": "therapy_session",
+    "language": "de",
+    "utterance_count": 10
+  },
+  "utterance_states": [
+    {
+      "id": 1,
+      "order_index": 1,
+      "valence": -0.2,
+      "arousal": 0.3,
+      "dominance": 0.1,
+      "discrete_emotions": {
+        "anger": 0.1,
+        "joy": 0.2,
+        "sadness": 0.6,
+        "fear": 0.1,
+        "disgust": 0.05,
+        "surprise": 0.15,
+        "trust": 0.3
+      }
+    },
+    {
+      "id": 2,
+      "order_index": 2,
+      "valence": -0.1,
+      "arousal": 0.4,
+      "dominance": 0.2,
+      "discrete_emotions": {
+        "anger": 0.05,
+        "joy": 0.3,
+        "sadness": 0.5,
+        "fear": 0.15,
+        "disgust": 0.1,
+        "surprise": 0.2,
+        "trust": 0.4
+      }
+    },
+    {
+      "id": 3,
+      "order_index": 3,
+      "valence": 0.1,
+      "arousal": 0.5,
+      "dominance": 0.3,
+      "discrete_emotions": {
+        "anger": 0.1,
+        "joy": 0.4,
+        "sadness": 0.3,
+        "fear": 0.2,
+        "disgust": 0.05,
+        "surprise": 0.25,
+        "trust": 0.5
+      }
+    },
+    {
+      "id": 4,
+      "order_index": 4,
+      "valence": 0.3,
+      "arousal": 0.6,
+      "dominance": 0.4,
+      "discrete_emotions": {
+        "anger": 0.15,
+        "joy": 0.6,
+        "sadness": 0.2,
+        "fear": 0.1,
+        "disgust": 0.05,
+        "surprise": 0.1,
+        "trust": 0.6
+      }
+    },
+    {
+      "id": 5,
+      "order_index": 5,
+      "valence": 0.5,
+      "arousal": 0.4,
+      "dominance": 0.5,
+      "discrete_emotions": {
+        "anger": 0.2,
+        "joy": 0.5,
+        "sadness": 0.1,
+        "fear": 0.05,
+        "disgust": 0.1,
+        "surprise": 0.15,
+        "trust": 0.7
+      }
+    },
+    {
+      "id": 6,
+      "order_index": 6,
+      "valence": 0.4,
+      "arousal": 0.3,
+      "dominance": 0.6,
+      "discrete_emotions": {
+        "anger": 0.25,
+        "joy": 0.4,
+        "sadness": 0.15,
+        "fear": 0.1,
+        "disgust": 0.15,
+        "surprise": 0.1,
+        "trust": 0.65
+      }
+    },
+    {
+      "id": 7,
+      "order_index": 7,
+      "valence": 0.2,
+      "arousal": 0.2,
+      "dominance": 0.5,
+      "discrete_emotions": {
+        "anger": 0.3,
+        "joy": 0.3,
+        "sadness": 0.2,
+        "fear": 0.15,
+        "disgust": 0.2,
+        "surprise": 0.05,
+        "trust": 0.5
+      }
+    },
+    {
+      "id": 8,
+      "order_index": 8,
+      "valence": -0.1,
+      "arousal": 0.1,
+      "dominance": 0.4,
+      "discrete_emotions": {
+        "anger": 0.4,
+        "joy": 0.1,
+        "sadness": 0.3,
+        "fear": 0.2,
+        "disgust": 0.3,
+        "surprise": 0.1,
+        "trust": 0.3
+      }
+    },
+    {
+      "id": 9,
+      "order_index": 9,
+      "valence": -0.3,
+      "arousal": 0.2,
+      "dominance": 0.3,
+      "discrete_emotions": {
+        "anger": 0.5,
+        "joy": 0.05,
+        "sadness": 0.5,
+        "fear": 0.3,
+        "disgust": 0.4,
+        "surprise": 0.15,
+        "trust": 0.2
+      }
+    },
+    {
+      "id": 10,
+      "order_index": 10,
+      "valence": -0.1,
+      "arousal": 0.4,
+      "dominance": 0.4,
+      "discrete_emotions": {
+        "anger": 0.3,
+        "joy": 0.2,
+        "sadness": 0.4,
+        "fear": 0.25,
+        "disgust": 0.25,
+        "surprise": 0.2,
+        "trust": 0.4
+      }
+    }
+  ],
+  "ued_metrics": {
+    "home_base": {
+      "valence": 0.05,
+      "arousal": 0.3,
+      "description": "Moderate valence with average arousal"
+    },
+    "variability": {
+      "level": "medium",
+      "description": "Medium emotional variability across utterances"
+    },
+    "emotional_intensity": {
+      "level": "high",
+      "description": "High overall emotional intensity in the session"
+    },
+    "emotional_saturation": {
+      "level": "medium",
+      "description": "Medium saturation of emotions in the text"
+    }
+  },
+  "psychological_lenses": {
+    "attachment_pattern": "Anxious attachment pattern detected with fear of abandonment themes",
+    "defense_mechanisms": [
+      "Projection observed in statements about others",
+      "Rationalization of emotional responses"
+    ],
+    "emotional_regulation": "Primarily dysregulated with some attempts at cognitive reappraisal",
+    "therapeutic_alliance": "Moderate alliance with some resistance to exploration"
+  }
+}

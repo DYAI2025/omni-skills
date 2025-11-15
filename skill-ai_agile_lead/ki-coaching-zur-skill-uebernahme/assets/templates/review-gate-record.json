@@ -1,0 +1,9 @@
+{
+  "gate_name": "Ideation",
+  "date": "2025-01-10",
+  "reviewers": ["Agent (Agile Lead)", "Architect"],
+  "decision": "approve",
+  "rationale": "Annahmen explizit, unrealistische Pfade verworfen, klarer Problemrahmen.",
+  "risks": "Unklare Datenqualität in Segment B – Messplan in Phase 3 erforderlich.",
+  "next_actions": "Transfer K1/K2 in Phase 2, in testbare Chunks schneiden und DoD/KPIs definieren."
+}

@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MarkerAnnotator Output Schema",
+  "description": "Output format for marker annotations with span positions, colors, and metadata",
+  "type": "object",
+  "required": ["sit", "annotations", "telemetry"],
+  "properties": {
+    "input_excerpt": {
+      "type": "string",
+      "description": "First 200 characters of input for reference",
+      "maxLength": 200
+    },
+    "sit": {
+      "type": "number",
+      "description": "Style-Intensity-Threshold used for this analysis",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "annotations": {
+      "type": "array",
+      "description": "Array of marker annotations with precise text spans",
+      "items": {
+        "type": "object",
+        "required": ["msgIndex", "start", "end", "level", "id", "color"],
+        "properties": {
+          "msgIndex": {
+            "type": "integer",
+            "description": "Index of the message in the input array",
+            "minimum": 0
+          },
+          "start": {
+            "type": "integer",
+            "description": "Character offset where marker starts (0-indexed)",
+            "minimum": 0
+          },
+          "end": {
+            "type": "integer",
+            "description": "Character offset where marker ends (exclusive)",
+            "minimum": 0
+          },
+          "level": {
+            "type": "string",
+            "description": "Marker level in LeanDeep hierarchy",
+            "enum": ["ATO", "SEM", "CLU", "MEMA"]
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique marker ID from catalog",
+            "pattern": "^(ATO|SEM|CLU|MEMA)_[A-Z_]+"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label (matched text or description)"
+          },
+          "color": {
+            "type": "string",
+            "description": "Hex color for highlighting (theme-aware)",
+            "pattern": "^#([0-9a-fA-F]{6})$"
+          }
+        }
+      }
+    },
+    "clusters": {
+      "type": "array",
+      "description": "Cluster-level markers (CLU/MEMA) with window information",
+      "items": {
+        "type": "object",
+        "required": ["id", "level"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(CLU|MEMA)_[A-Z_]+"
+          },
+          "level": {
+            "type": "string",
+            "enum": ["CLU", "MEMA"]
+          },
+          "window": {
+            "type": "array",
+            "description": "Message IDs in the window (e.g., ['m1', 'm2'])",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ars": {
+            "type": "number",
+            "description": "Adaptive Response Score (MEMA only)",
+            "minimum": 0.0,
+            "maximum": 5.0
+          },
+          "decay": {
+            "type": "string",
+            "description": "Decay rate (e.g., '0.85/24h')"
+          }
+        }
+      }
+    },
+    "rf_context": {
+      "type": "object",
+      "description": "Relationship Field context",
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "RF level (L1-STONE to L6-GOLD)"
+        },
+        "intensity": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      }
+    },
+    "post_analysis": {
+      "type": "object",
+      "description": "Post-processing metadata",
+      "properties": {
+        "novel_candidates": {
+          "type": "array",
+          "description": "Potential new markers (filtered by 3× threshold)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pattern": { "type": "string" },
+              "frequency": { "type": "integer" },
+              "family_hint": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "description": "Processing statistics",
+      "properties": {
+        "total_markers": {
+          "type": "integer",
+          "description": "Total number of markers detected",
+          "minimum": 0
+        },
+        "by_level": {
+          "type": "object",
+          "description": "Marker counts per level",
+          "properties": {
+            "ATO": { "type": "integer" },
+            "SEM": { "type": "integer" },
+            "CLU": { "type": "integer" },
+            "MEMA": { "type": "integer" }
+          }
+        },
+        "novel_filtered": {
+          "type": "integer",
+          "description": "Number of novel patterns filtered out",
+          "minimum": 0
+        },
+        "violations": {
+          "type": "integer",
+          "description": "Number of composition rule violations",
+          "minimum": 0
+        },
+        "processing_time_ms": {
+          "type": "number",
+          "description": "Time taken for analysis in milliseconds"
+        }
+      }
+    }
+  }
+}

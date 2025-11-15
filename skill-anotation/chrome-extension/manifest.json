@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "LeanDeep Marker Annotator",
+  "version": "1.0.0",
+  "description": "Visualisiert Marker-Annotationen (ATO/SEM/CLU/MEMA) mit Dark-Mode und SIT-Steuerung",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["http://127.0.0.1:8642/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

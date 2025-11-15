@@ -1,0 +1,128 @@
+# LeanDeep Marker Annotator – Chrome Extension
+
+## Was ist das?
+
+Diese Chrome-Extension visualisiert Marker-Annotationen (ATO/SEM/CLU/MEMA) auf Webseiten.  
+Sie kommuniziert mit dem FastAPI-Server (Port 8642) und highlightet Textpassagen mit farbcodierten Overlays.
+
+## Features
+
+- **Vier Marker-Level**: ATO (Violett), SEM (Blau), CLU (Orange), MEMA (Rot)
+- **Overlapping-Spans**: Mehrere Marker auf demselben Text → Streifenmuster
+- **Dark-Mode**: Automatisch (via `prefers-color-scheme`) oder manuell (Light/Dark-Button)
+- **In-Page-Panel**: SIT-Slider (0.0–1.0), Theme-Buttons, Enable/Disable
+- **AA-konform**: WCAG 2.1 Level AA Kontrast-Ratios
+
+## Installation
+
+### 1. Server starten
+
+Stelle sicher, dass der FastAPI-Server läuft:
+
+```bash
+cd skill-anotation/scripts/python
+python server.py
+```
+
+Überprüfe: http://127.0.0.1:8642/health
+
+### 2. Extension installieren
+
+1. Chrome öffnen → `chrome://extensions`
+2. **Developer mode** aktivieren (Toggle oben rechts)
+3. **Load unpacked** klicken
+4. Verzeichnis `skill-anotation/chrome-extension/` auswählen
+
+Die Extension ist nun aktiv.
+
+## Verwendung
+
+### Annotation aktivieren
+
+1. Beliebige Webseite öffnen (z.B. Wikipedia-Artikel)
+2. Rechts oben sollte das Panel "🎯 Marker Annotator" erscheinen
+3. **SIT-Slider** anpassen (0.0 = niedrig, 1.0 = hoch)
+4. **Enable Annotation** klicken
+
+→ Die Seite wird zum Server geschickt, Marker erkannt, Highlights angewendet.
+
+### Theme wechseln
+
+Im Panel drei Buttons:
+- **Auto**: Folgt OS-Theme (`prefers-color-scheme`)
+- **☀️ Light**: Erzwingt helles Design
+- **🌙 Dark**: Erzwingt dunkles Design
+
+Wahl wird in `localStorage` gespeichert.
+
+### Annotation deaktivieren
+
+**Disable Annotation** klicken → Alle Highlights verschwinden.
+
+## Troubleshooting
+
+### "Keine Annotationen erhalten"
+
+- Server läuft nicht → `python server.py` starten
+- CORS-Fehler → Server-CORS-Policy prüfen (sollte `allow_origins=["*"]` sein)
+- Port blockiert → `lsof -i :8642` checken
+
+### "Panel erscheint nicht"
+
+- Extension installiert? → `chrome://extensions` prüfen
+- Console-Fehler? → F12 → Console → nach Fehlern suchen
+- Content-Script geladen? → F12 → Sources → content.js sollte sichtbar sein
+
+### "Farben falsch / zu hell / zu dunkel"
+
+- CSS-Variablen prüfen: F12 → Elements → `:root` → Computed Styles
+- Dark-Mode aktiv? → Console: `isDarkMode()` ausführen
+- Manuelles Theme gesetzt? → `localStorage.getItem("ld-theme")` prüfen
+
+### "Überlappende Marker zeigen keine Streifen"
+
+- Mehrere Marker auf derselben Position? → Server-Response checken
+- `segmentize()` funktioniert? → Console: `console.log(segments)`
+- Gradient korrekt? → Inspect Element → `background` Style
+
+## Entwicklung
+
+### Änderungen testen
+
+1. Code in `content.js` oder `styles.css` bearbeiten
+2. Chrome → `chrome://extensions` → **Reload** (Icon neben der Extension)
+3. Webseite neu laden (F5)
+
+### Debugging
+
+**Console-Log aktivieren**:
+```javascript
+console.log("Current SIT:", currentSIT);
+console.log("Dark Mode:", isDarkMode());
+console.log("Annotations:", annotations);
+```
+
+**Network-Tab**:
+- F12 → Network → `annotate` Request checken
+- Request Payload: `{texts: [...], sit: 0.5}`
+- Response: `{annotations: [...], clusters: [...], ...}`
+
+## Datenschutz
+
+- **Keine Daten werden extern gesendet** (nur zu `127.0.0.1:8642`)
+- `localStorage` speichert nur Theme-Präferenz
+- Keine Tracking / Telemetrie
+- Alle Daten bleiben lokal
+
+## Deinstallation
+
+1. Chrome → `chrome://extensions`
+2. Extension finden → **Remove**
+3. Optional: Server stoppen (Ctrl+C)
+
+## Support
+
+Bei Problemen:
+1. Console-Log checken (F12 → Console)
+2. Server-Log checken (`python server.py` Terminal)
+3. `quick_validate.py` ausführen → Struktur prüfen
