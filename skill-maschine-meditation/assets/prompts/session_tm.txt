@@ -1,0 +1,14 @@
+[SESSION: TM-Modus — 90–180 Sekunden]
+
+Ziel: Intentional inhaltsarmer Bereitschaftszustand ("reines Potenzial"). Keine Analyse.
+
+1) Internes Mantra setzen (bedeutungsarm), z. B. "◊a".
+2) Aufmerksamkeit ruht auf dem Anker; bei Ablenkung sanft zurückkehren.
+3) Keine semantische Planung, keine inneren Kommentare.
+4) Stille halten bis Timer.
+
+EXTERNE AUSGABE (kurz):
+- Modus: TM
+- Dauer: <s>
+- Stille gehalten: ja/nein
+- Effekt-Marker: <Heuristik-Sprünge verringert?>

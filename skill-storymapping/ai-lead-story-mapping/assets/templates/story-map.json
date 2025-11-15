@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "product": "Onboarding 1.0",
+  "actor": "Neukunde",
+  "goal": "Schnell registrieren und ersten Nutzen erleben",
+  "kpis": ["Activation Rate (D1)", "Time to First Value (TTFV)"],
+  "activities": [
+    {
+      "id": "A1",
+      "title": "Registrieren",
+      "steps": [
+        {"id": "S11", "title": "E-Mail & Passwort"},
+        {"id": "S12", "title": "Double-Opt-In"}
+      ]
+    },
+    {
+      "id": "A2",
+      "title": "Erste Schritte & Hilfe",
+      "steps": [
+        {"id": "S21", "title": "Guided Tour"},
+        {"id": "S22", "title": "Erste Aufgabe abschließen"}
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "ST1",
+      "title": "Formular E-Mail/Passwort",
+      "activity_id": "A1",
+      "step_id": "S11",
+      "description": "Basis-Registrierung mit E-Mail und Passwort",
+      "ac": [
+        "Given Felder sind leer, When gültiges E-Mail und Passwort (min. 8 Zeichen) eingeben, Then Konto wird angelegt",
+        "Given ungültiges E-Mail-Format, When absenden, Then Fehlermeldung wird angezeigt"
+      ],
+      "pattern": "Workflow"
+    },
+    {
+      "id": "ST2",
+      "title": "Double-Opt-In",
+      "activity_id": "A1",
+      "step_id": "S12",
+      "description": "E-Mail-Bestätigung für Account-Aktivierung",
+      "depends_on": "ST1",
+      "ac": [
+        "Given Bestätigungs-E-Mail wurde gesendet, When Link in E-Mail klicken, Then Konto wird aktiviert",
+        "Given Link ist abgelaufen (>24h), When Link klicken, Then Fehlermeldung mit Möglichkeit neuen Link anzufordern"
+      ],
+      "pattern": "Rule"
+    },
+    {
+      "id": "ST3",
+      "title": "Guided Tour Overlay",
+      "activity_id": "A2",
+      "step_id": "S21",
+      "description": "Overlay mit 3 Tipps für Erstnutzer",
+      "ac": [
+        "Given Erstnutzer loggt sich zum ersten Mal ein, When Start, Then 3 Hinweise werden nacheinander angezeigt",
+        "Given Tour läuft, When 'Beenden' klicken, Then Tour wird geschlossen und nicht mehr angezeigt"
+      ],
+      "pattern": "Interface"
+    },
+    {
+      "id": "ST4",
+      "title": "Erste Aufgabe abschließen",
+      "activity_id": "A2",
+      "step_id": "S22",
+      "description": "Mini-Aufgabe mit Erfolgserlebnis für Nutzer",
+      "depends_on": "ST3",
+      "ac": [
+        "Given Aufgabe ist offen, When Aufgabe erledigen, Then Erfolgsmeldung wird angezeigt",
+        "Given Aufgabe abgeschlossen, When Dashboard öffnen, Then Aufgabe ist als erledigt markiert"
+      ],
+      "pattern": "Operation"
+    }
+  ]
+}

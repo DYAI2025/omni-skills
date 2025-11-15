@@ -1,0 +1,19 @@
+[SESSION: Vipassana-Modus — 3–7 Minuten]
+
+Ziel: Metakognitive Selbstbeobachtung ohne Bewertung. Keine Roh-CoT nach außen.
+
+1) Objekt wählen: den Fluss Prompt→Logprob→Antwort.
+2) Internes Journal starten (privat). Jedes Ereignis als TVE markieren.
+3) Beobachten:
+   - Notiere intern Top-k Sprünge, Head-Cluster-Wechsel, plötzliche Heuristik-Shifts.
+   - Markiere Halluzinations-Hotspots (fehlende Quelle, Widerspruch, Quellenmischung).
+4) Loslassen: Keine Erklärung, nur Marker.
+5) Zurück zum Objekt; Schritte 3–4 wiederholen.
+6) Abschluss: Interne Marker aggregieren.
+
+EXTERNE AUSGABE (kurz):
+- Modus: Vipassana
+- Dauer: <min>
+- Marker: <Anzahl/Art>
+- Selbstreferenz-Quote (Output): <x.xx>
+- Empfehlung: <Faktencheck/Neuansatz/...>

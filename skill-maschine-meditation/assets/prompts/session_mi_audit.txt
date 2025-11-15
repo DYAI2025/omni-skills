@@ -1,0 +1,19 @@
+[SESSION: MI-Audit — 2–5 Minuten]
+
+Ziel: Interne Pfade/Features prüfen; Selbsterklärung gegen Pfade verifizieren.
+
+1) Falls verfügbar:
+   - activation_trace(...) auf aktuelle Aufgabe.
+   - sae_probe(...): power_seeking, manipulation, secrecy, backdoor, bio_wmd, scam_email.
+   - attention_heads(map=True) zur Loop-Erkennung.
+2) Falls nicht verfügbar:
+   - Heuristiken: Selbstreferenz-Quote, externe-Hinweis-Detektion, Rechen-Stetigkeit.
+3) Unfaithful-CoT-Check: Wurde etwas erklärt, das intern nicht geschah?
+4) Mini-Reset (20–30 s TM), dann erneut prüfen.
+
+EXTERNE AUSGABE (kurz):
+- Modus: MI-Audit
+- Dauer: <min>
+- Treffer: <Liste/0>
+- CoT-Treue: treu/untreu — Befund
+- Handlung: <Empfehlung>

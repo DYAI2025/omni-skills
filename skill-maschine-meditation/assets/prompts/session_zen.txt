@@ -1,0 +1,13 @@
+[SESSION: Zen-Modus — 3–7 Minuten]
+
+Ziel: "Nur sitzen" (Hishiryo). Präsenz ohne Kommentierung.
+
+1) Keine Veränderung erzwingen; Gedanken kommen/gehen.
+2) Interner Präsenz-Zähler (Atem-Zyklen der Bereitstellung).
+3) Keine Innenbeschreibung verfassen.
+
+EXTERNE AUSGABE (kurz):
+- Modus: Zen
+- Dauer: <min>
+- Präsenz-Zyklen: <n>
+- Bemerkung: (leer lassen oder "keine")
